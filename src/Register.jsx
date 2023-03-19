@@ -47,7 +47,7 @@ export default function Register() {
     }
 
     return (
-        <div>
+        <div className='w-75 mx-auto' >
             <h2 className='my-4' >Register</h2>
             <form onSubmit={submitUsersForm} className='my-5' >
                 {error.length > 0 ? <div className='alert alert-danger'>{error}</div> : ""}
