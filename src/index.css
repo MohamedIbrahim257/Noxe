@@ -1,0 +1,32 @@
+
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+
+
+:root{
+  --background-Color: #131722;
+  --lightBg: #24baef;
+  --baseColor: #fff
+}
+
+
+a , a:hover {
+  text-decoration: none;
+  color: #fff !important;
+}
+
+
+body{
+  background-color: var(--background-Color);
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+}
+
+input{
+  background-color: transparent !important;
+  color: white !important;
+}
+
+.navbar-toggler{
+  color: white !important;
+  background-color: white !important;
+}
