@@ -33,6 +33,7 @@ function App() {
   }
 
   const logout = () => {
+    setSecoded(null)
     localStorage.removeItem("setUserData")
     navigate("/Login")
   }
@@ -40,7 +41,7 @@ function App() {
   // refresh Token
   // useEffect(() => {
   //   if (localStorage.getItem("setUserData") === null) {
-  //     return decoded()
+//     return decoded()
   //   }
   // }, [])
 
@@ -50,9 +51,9 @@ function App() {
       <div className='container' >
         <Routes>
           <Route path='/' element={<Home></Home>} ></Route>
-          <Route path='Home' element={<ProtectedRoute><Home></Home></ProtectedRoute>} ></Route>
-          <Route path='About' element={<ProtectedRoute><About></About></ProtectedRoute>} ></Route>
-          <Route path='Contact' element={<ProtectedRoute><Contact></Contact></ProtectedRoute>} ></Route>
+          <Route path='Home' element={<Home></Home>} ></Route>
+          <Route path='About' element={<About></About>} ></Route>
+          <Route path='Contact' element={<Contact></Contact>} ></Route>
           <Route path='Login' element={<Login decoded={decoded} ></Login>} ></Route>
           <Route path='Register' element={<Register></Register>} ></Route>
           <Route path='*' element={<Notfound></Notfound>} ></Route>
