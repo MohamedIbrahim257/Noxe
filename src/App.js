@@ -12,6 +12,7 @@ import Footer from './Footer';
 import jwtDecode from 'jwt-decode';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import MovieDetails from './MovieDetails';
 
 
 function App() {
@@ -40,7 +41,7 @@ function App() {
 
   // refresh Token
   // useEffect(() => {
-  //   if (localStorage.getItem("setUserData") === null) {
+//   if (localStorage.getItem("setUserData") === null) {
 //     return decoded()
   //   }
   // }, [])
@@ -52,6 +53,9 @@ function App() {
         <Routes>
           <Route path='/' element={<Home></Home>} ></Route>
           <Route path='Home' element={<Home></Home>} ></Route>
+          <Route path='MovieDetails' element={<MovieDetails></MovieDetails>} >
+            <Route path=':id' ></Route>
+          </Route>
           <Route path='About' element={<About></About>} ></Route>
           <Route path='Contact' element={<Contact></Contact>} ></Route>
           <Route path='Login' element={<Login decoded={decoded} ></Login>} ></Route>
