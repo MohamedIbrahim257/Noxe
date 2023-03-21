@@ -66,7 +66,7 @@ export default function Home() {
         </div>
         {trendingTv.map((tv, i) => <>
           <div key={i} className="col-md-2">
-            <Link to='/MovieDetails' >
+            <Link to={`/MovieDetails/${tv.id}`} >
               <div className="item text-center">
                 <img className='w-100' src={"https://image.tmdb.org/t/p/w500/" + tv.poster_path} alt="" />
                 <h2 className='h5 py-2' >{tv.name}</h2>

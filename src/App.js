@@ -13,6 +13,8 @@ import jwtDecode from 'jwt-decode';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import MovieDetails from './MovieDetails';
+import Moveis from './Movies'
+import Tv from './Tv';
 
 
 function App() {
@@ -47,12 +49,14 @@ function App() {
   // }, [])
 
   return (
-    <div className="">
+    <div>
       <Navbar userData={decode} logout={logout} ></Navbar>
       <div className='container' >
         <Routes>
           <Route path='/' element={<Home></Home>} ></Route>
           <Route path='Home' element={<Home></Home>} ></Route>
+          <Route path='Movies' element={<Moveis></Moveis>} ></Route>
+          <Route path='TV' element={<Tv></Tv>} ></Route>
           <Route path='MovieDetails' element={<MovieDetails></MovieDetails>} >
             <Route path=':id' ></Route>
           </Route>

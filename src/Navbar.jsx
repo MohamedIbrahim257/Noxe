@@ -11,9 +11,15 @@ export default function Navbar(props) {
                         <span className="navbar-toggler-icon"></span>
                     </button>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                        {props.decode === null ? <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                        {props.decode !== null ? <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                             <li className="nav-item">
                                 <Link className="nav-link active" aria-current="page" to="Home">Home</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link className="nav-link active" aria-current="page" to="Movies">Movies</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link className="nav-link active" aria-current="page" to="Tv">TV Show</Link>
                             </li>
                             <li className="nav-item">
                                 <Link className="nav-link" to="About">About</Link>
