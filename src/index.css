@@ -50,3 +50,21 @@ input {
 .item:hover{
  transform: scale(1.1);
 }
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  border: #fff 1px solid;
+  border-radius: 5px;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  outline: none;
+}
+

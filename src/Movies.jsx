@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import SearchBar from './SearchBar'
 
 
 export default function Home() {
@@ -11,22 +12,25 @@ export default function Home() {
     const api = "eba8b9a7199efdcb0ca1f96879b83c44"
     const getTrending = async (index, callBack, mediaType) => {
         let { data } = await axios.get(`https://api.themoviedb.org/3/discover/${mediaType}?api_key=${api}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${index}`)
+
         callBack(data.results)
+
         console.log(data)
 
     }
 
 
-    useEffect(() => {
-        getTrending(1, setTrendingMovies, "movie")
-        // getTrending('tv', setTrendingMovies, 1)
 
+    useEffect(() => {
+
+        getTrending(1, setTrendingMovies, "movie")
+        // getTrending('tv', setTrendingMovies, 1)  
     }, [])
 
 
     return (
         <>
-
+            <SearchBar className="my-3" ></SearchBar>
             {trendingMovies ? <div className="row gy-2 justify-content-center">
 
                 {trendingMovies.map((movies, i) => <>
@@ -52,7 +56,7 @@ export default function Home() {
 
                     </ul>
                 </nav>
-            </div> : <div className='vh-100 d-flex align-items-center justify-content-center' ><i className='fas fa-spinner fa-spin' ></i></div>}
+            </div> : <div className='vh-100 d-flex align-items-center justify-content-center' ><i className='fas fa-spinner fa-spin fa-3x' ></i></div>}
 
         </>
     )

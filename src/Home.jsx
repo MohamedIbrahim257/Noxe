@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import SearchBar from './SearchBar'
 
 
 export default function Home() {
@@ -25,6 +26,7 @@ export default function Home() {
 
   return (
     <>
+      <SearchBar></SearchBar>
       <div className="row gy-2">
         <div className="col-md-4 d-flex align-items-center justify-content-center">
 
