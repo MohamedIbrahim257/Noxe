@@ -4,15 +4,19 @@ import { Link } from 'react-router-dom'
 import SearchBar from './SearchBar'
 
 
+
+
 export default function Home() {
   let [trendingMovies, setTrendingMovies] = useState([])
   let [trendingTv, setTrendingTv] = useState([])
   let [trendingPepole, setTrendingPepole] = useState([])
+  let [loading , setLoading] = useState(true)
 
   const api = "api_key=eba8b9a7199efdcb0ca1f96879b83c44"
   const getTrending = async (mediaType, callBack, time) => {
     let { data } = await axios.get(`https://api.themoviedb.org/3/trending/${mediaType}/${time}?${api}`)
     callBack(data.results.slice(0, 10))
+    setLoading(false)
     console.log(data)
 
   }
@@ -26,8 +30,10 @@ export default function Home() {
 
   return (
     <>
+  
       <SearchBar></SearchBar>
-      <div className="row gy-2 my-3">
+      {!loading ? <>
+        <div className="row gy-2 my-3">
         <div className="col-md-4 d-flex align-items-center justify-content-center">
 
           <div className="description">
@@ -77,7 +83,9 @@ export default function Home() {
 
           </div>
         </>)}
-      </div>
+      </div> 
+      </> : <div className='vh-100 d-flex justify-content-center align-items-center fa-3x' ><i className='fas fa-spinner fa-spin' ></i></div> } 
+  
     </>
   )
 }

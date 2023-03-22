@@ -10,6 +10,7 @@ export default function MovieDetails() {
     let [movieDetails, setMovieDetails] = useState([])
     let [genres, setGenres] = useState([])
     let [seasons , setSeasons] = useState([])
+    let [loading , setLoading] = useState(true)
     let params = useParams()
 
     const api = "eba8b9a7199efdcb0ca1f96879b83c44"
@@ -19,17 +20,19 @@ export default function MovieDetails() {
         callBack(data)
         setGenres(data.genres)
         setSeasons(data.seasons)
+        setLoading(false)
         console.log(data)
     }
 
     useEffect(() => {
-        getDetails("movie", setMovieDetails, params.id)
-        getDetails("tv", setMovieDetails, params.id)
+       getDetails("movie", setMovieDetails, params.id)
+       getDetails("tv", setMovieDetails, params.id)
     }, [])
 
     return (
         <>
-            {movieDetails ? <div className="row my-5 py-5">
+             {!loading  ? <>
+                {movieDetails || movieDetails != undefined ? <div className="row my-5 py-5">
                 <div className="col-md-5">
                     <img className='w-100' src={"https://image.tmdb.org/t/p/w500/" + movieDetails.backdrop_path} alt="" />
                     <div className="button-Link d-flex justify-content-center my-4">
@@ -71,6 +74,10 @@ export default function MovieDetails() {
                 </div>
             </div> : <div className='vh-100 d-flex justify-content-center align-items-center'>
                 <i className='fas fa-spinner fa-spin fa-3x' ></i></div>}
+             
+             </> :<div className='vh-100 d-flex justify-content-center align-items-center'>
+                <i className='fas fa-spinner fa-spin fa-3x' ></i></div>}
+
 
         </>
 
