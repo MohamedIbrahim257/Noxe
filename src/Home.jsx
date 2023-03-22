@@ -27,7 +27,7 @@ export default function Home() {
   return (
     <>
       <SearchBar></SearchBar>
-      <div className="row gy-2">
+      <div className="row gy-2 my-3">
         <div className="col-md-4 d-flex align-items-center justify-content-center">
 
           <div className="description">

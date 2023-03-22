@@ -26,7 +26,10 @@ export default function Home() {
 
     return (
         <>
-            <SearchBar></SearchBar>
+        <div className='my-3' >
+        <SearchBar></SearchBar>
+        </div>
+        
             <div className="row gy-2 justify-content-center">
 
                 {trendingTv.map((tv, i) => <>

@@ -30,7 +30,10 @@ export default function Home() {
 
     return (
         <>
-            <SearchBar className="my-3" ></SearchBar>
+        <div className='my-3' >
+        <SearchBar></SearchBar>
+        </div>
+       
             {trendingMovies ? <div className="row gy-2 justify-content-center">
 
                 {trendingMovies.map((movies, i) => <>
