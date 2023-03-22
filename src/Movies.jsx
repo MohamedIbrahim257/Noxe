@@ -36,9 +36,9 @@ export default function Home() {
        
             {trendingMovies ? <div className="row gy-2 justify-content-center">
 
-                {trendingMovies.map((movies, i) => <>
+                {trendingMovies.map((movies) => <>
 
-                    <div key={i} className="col-md-2">
+                    <div key={movies.id} className="col-md-2">
                         <Link to={`/MovieDetails/${movies.id}`} >
                             <div className="item text-center ">
                                 <img className='w-100' src={"https://image.tmdb.org/t/p/w500/" + movies.poster_path} alt="" />
@@ -52,8 +52,8 @@ export default function Home() {
                 </>)}
                 <nav className=' d-flex justify-content-center' aria-label="...">
                     <ul className="pagination pagination-sm">
-                        {pagenation.map((page) =>
-                            <li key={page} onClick={() => getTrending(page, setTrendingMovies, 'movie')} className="page-item " aria-current="page">
+                        {pagenation.map((page ,i) =>
+                            <li key={i} onClick={() => getTrending(page, setTrendingMovies, 'movie')} className="page-item " aria-current="page">
                                 <Link className="page-link bg-transparent text-white">{page}</Link>
                             </li>)}
 

@@ -40,9 +40,9 @@ export default function Home() {
 
 
         </div>
-        {trendingMovies.map((movies, i) => <>
+        {trendingMovies.map((movies) => <>
 
-          <div key={i} className="col-md-2 ">
+          <div key={movies.id} className="col-md-2 ">
             <Link to={`/MovieDetails/${movies.id}`} >
               <div className="item text-center ">
                 <img className='w-100' src={"https://image.tmdb.org/t/p/w500/" + movies.poster_path} alt="" />
@@ -66,8 +66,8 @@ export default function Home() {
 
 
         </div>
-        {trendingTv.map((tv, i) => <>
-          <div key={i} className="col-md-2">
+        {trendingTv.map((tv) => <>
+          <div key={tv.id} className="col-md-2">
             <Link to={`/MovieDetails/${tv.id}`} >
               <div className="item text-center">
                 <img className='w-100' src={"https://image.tmdb.org/t/p/w500/" + tv.poster_path} alt="" />

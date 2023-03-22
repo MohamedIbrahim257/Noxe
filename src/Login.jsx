@@ -45,7 +45,7 @@ export default function Login(props) {
     }
 
     return (
-        <div className='w-50 mx-auto ' >
+        <div className='w-50 mx-auto border-4 my-5 py-5 ' >
             <h2 className='my-4' >Login</h2>
             <form onSubmit={submitUsersForm} className='my-5 ' >
                 {error.length > 0 ? <div className='alert alert-danger'>{error}</div> : ""}

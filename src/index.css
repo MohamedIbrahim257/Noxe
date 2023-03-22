@@ -56,10 +56,10 @@ input {
   align-items: center;
   margin-bottom: 1rem;
   border: #fff 1px solid;
-  border-radius: 5px;
+  border-radius: 10px;
 }
 
-input[type="text"] {
+.input-search-bar{
   width: 100%;
   padding: 0.5rem;
   border: none;
@@ -75,6 +75,8 @@ input[type="text"] {
 .search-list {
   margin: 0 auto;
   background-color: white;
+  border-radius: 10px;
+  width: 98%;
 }
 
 
@@ -93,13 +95,14 @@ input[type="text"] {
 
 }
 
-@media (min-width: 768px) {
+@media (max-width: 768px) {
   .search-list input {
     width: 50%;
-    font-size: 1.5rem;
+    font-size: 0.6rem;
   }
 
   .search-list li {
-    font-size: 1.5rem;
+    font-size: 0.6rem;
+    font-weight: bold;
   }
 }

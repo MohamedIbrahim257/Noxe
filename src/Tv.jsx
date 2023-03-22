@@ -32,9 +32,9 @@ export default function Home() {
         
             <div className="row gy-2 justify-content-center">
 
-                {trendingTv.map((tv, i) => <>
+                {trendingTv.map((tv) => <>
 
-                    <div key={i} className="col-md-2">
+                    <div key={tv.id} className="col-md-2">
                         <Link to={`/MovieDetails/${tv.id}`} >
                             <div className="item text-center ">
                                 {tv.poster_path ? <img className='w-100' src={"https://image.tmdb.org/t/p/w500/" + tv.poster_path} alt="" /> : <div>Photo Not Found</div>}
@@ -49,8 +49,8 @@ export default function Home() {
                 </>)}
                 <nav className=' d-flex justify-content-center' aria-label="...">
                     <ul className="pagination pagination-sm">
-                        {pagenation.map((page) =>
-                            <li key={page} onClick={() => getTrending(page, setTrendingTv, 'tv')} className="page-item " aria-current="page">
+                        {pagenation.map((page,i) =>
+                            <li key={i} onClick={() => getTrending(page, setTrendingTv, 'tv')} className="page-item " aria-current="page">
                                 <Link className="page-link bg-transparent text-white">{page}</Link>
                             </li>)}
 
