@@ -21,9 +21,9 @@ export default function Navbar(props) {
                             <li className="nav-item">
                                 <Link className="nav-link active" aria-current="page" to="Tv">TV Show</Link>
                             </li>
-                            <li className="nav-item">
+                            {/* <li className="nav-item">
                                 <Link className="nav-link" to="About">About</Link>
-                            </li>
+                            </li> */}
                             <li className="nav-item">
                                 <Link className="nav-link" to="Contact" >Contact</Link>
                             </li>
