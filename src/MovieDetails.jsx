@@ -9,6 +9,7 @@ export default function MovieDetails() {
 
     let [movieDetails, setMovieDetails] = useState([])
     let [genres, setGenres] = useState([])
+    let [images , setImages] = useState([])
     let [seasons , setSeasons] = useState([])
     let [loading , setLoading] = useState(true)
     let params = useParams()
@@ -24,9 +25,19 @@ export default function MovieDetails() {
         console.log(data)
     }
 
+    const getImages = async (mediaType, callBack, id) => {
+
+        let { data } = await axios.get(`
+        https://api.themoviedb.org/3/${mediaType}/${id}/videos?api_key=${api}&language=en-US`)
+        callBack(data)
+        setLoading(false)
+        console.log(data)
+    }
+
     useEffect(() => {
        getDetails("movie", setMovieDetails, params.id)
        getDetails("tv", setMovieDetails, params.id)
+       getImages("movie" , setImages , params.id)
     }, [])
 
     return (
@@ -49,11 +60,14 @@ export default function MovieDetails() {
                         <li>vote count : {movieDetails.vote_count}</li>
                         {movieDetails.adult === false ? <li>adult : +18</li> : <li>adult : +13</li>}
                         {movieDetails.release_date ?   <li>Release Date : {movieDetails.release_date}</li> :  ""}
-                        {movieDetails.runtime ?   <li>Run Time : {movieDetails.runtime} min </li> : seasons.map((season)=> 
+                        {movieDetails.runtime ?   <li>Run Time : {movieDetails.runtime} min </li> : seasons.map((season , i)=> 
                         <>
+                        <div key={i}>
                         <li>Epsoides : {season.episode_count}</li>
                         <li>Release Date  : {season.air_date}</li>
                         
+                        </div>
+
                         </>
                         ) }
                       
