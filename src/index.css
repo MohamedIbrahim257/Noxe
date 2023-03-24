@@ -241,3 +241,23 @@ input {
   pointer-events: none;
 }
 
+
+
+
+.carousel-style{
+  padding-left: 4rem;
+}
+
+
+@media(max-width : 992px){
+  .carousel-style{
+    padding-left: 0rem;
+  }
+  .name-movies{
+    white-space: nowrap;
+    font-size: 0.7rem;
+  }
+  
+}
+
+

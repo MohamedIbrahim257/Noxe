@@ -51,7 +51,7 @@ function App() {
   return (
     <div>
       <Navbar userData={decode} logout={logout} ></Navbar>
-      <div className='container' >
+      <div className='' >
         <Routes>
           <Route path='/' element={<Home></Home>} ></Route>
           <Route path='Home' element={<Home></Home>} ></Route>

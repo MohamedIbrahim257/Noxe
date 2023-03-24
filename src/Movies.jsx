@@ -31,39 +31,45 @@ export default function Home() {
 
     return (
         <>
+      
+            <div className="container">
+
             <div className='my-3' >
                 <SearchBar></SearchBar>
             </div>
 
-            {!loading ? <>
-            
-                {trendingMovies ? <div className="row gy-2 justify-content-center">
-                {trendingMovies.map((movies) => <>
+                {!loading ? <>
 
-                    <div key={movies.id} className="col-md-2">
-                        <Link to={`/MovieDetails/${movies.id}`} >
-                            <div className="item text-center ">
-                                <img className='w-100' src={"https://image.tmdb.org/t/p/w500/" + movies.poster_path} alt="" />
-                                {<h2 className='h5 py-2' >{movies.title}</h2>}
+                    {trendingMovies ? <div className="row gy-2 justify-content-center">
+                        {trendingMovies.map((movies) => <>
+
+                            <div key={movies.id} className="col-md-2">
+                                <Link to={`/MovieDetails/${movies.id}`} >
+                                    <div className="item text-center ">
+                                        <img className='w-100' src={"https://image.tmdb.org/t/p/w500/" + movies.poster_path} alt="" />
+                                        {<h2 className='h5 py-2' >{movies.title}</h2>}
+
+                                    </div>
+                                </Link>
 
                             </div>
-                        </Link>
 
-                    </div>
+                        </>)}
+                        <nav className=' d-flex justify-content-center' aria-label="...">
+                            <ul className="pagination pagination-sm">
+                                {pagenation.map((page, i) =>
+                                    <li key={i} onClick={() => getTrending(page, setTrendingMovies, 'movie')} className="page-item " aria-current="page">
+                                        <Link className="page-link bg-transparent text-white">{page}</Link>
+                                    </li>)}
 
-                </>)}
-                <nav className=' d-flex justify-content-center' aria-label="...">
-                    <ul className="pagination pagination-sm">
-                        {pagenation.map((page, i) =>
-                            <li key={i} onClick={() => getTrending(page, setTrendingMovies, 'movie')} className="page-item " aria-current="page">
-                                <Link className="page-link bg-transparent text-white">{page}</Link>
-                            </li>)}
+                            </ul>
+                        </nav>
+                    </div> : <div className='vh-100 d-flex align-items-center justify-content-center' ><i className='fas fa-spinner fa-spin fa-3x' ></i></div>}
 
-                    </ul>
-                </nav>
-            </div> : <div className='vh-100 d-flex align-items-center justify-content-center' ><i className='fas fa-spinner fa-spin fa-3x' ></i></div>}
-            
-            </> : <div className='vh-100 d-flex align-items-center justify-content-center' ><i className='fas fa-spinner fa-spin fa-3x' ></i></div>}
+                </> : <div className='vh-100 d-flex align-items-center justify-content-center' ><i className='fas fa-spinner fa-spin fa-3x' ></i></div>}
+            </div>
+
+
 
 
         </>
