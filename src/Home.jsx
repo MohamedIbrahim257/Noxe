@@ -1,31 +1,20 @@
-import React, { useEffect, useState } from 'react'
-import axios from 'axios'
+
 import { Link } from 'react-router-dom'
 import SearchBar from './SearchBar'
 import Slider from "react-slick";
 import './slick-carousel/slick/slick.css';
 import './slick-carousel/slick/slick-theme.css';
+import { useContext } from 'react';
+import { Context } from './store';
 
 
 
 
 export default function Home() {
-  let [trendingMovies, setTrendingMovies] = useState([])
-  let [trendingTv, setTrendingTv] = useState([])
-  let [trendingMoviesWeek , setTrendingMoviesWeek] = useState([])
-  let [trendingTvsWeek , setTrendingTvWeek] = useState([])
-  let [loading, setLoading] = useState(true)
 
-  const randomMovie = trendingMovies[Math.floor(Math.random()* trendingMovies.length)]
 
-  const api = "api_key=eba8b9a7199efdcb0ca1f96879b83c44"
-  const getTrending = async (mediaType, callBack, time) => {
-    let { data } = await axios.get(`https://api.themoviedb.org/3/trending/${mediaType}/${time}?${api}`)
-    callBack(data.results.slice(0, 10))
-    setLoading(false)
-    console.log(data)
 
-  } 
+  let {trendingMovies , trendingTv , trendingMoviesWeek , trendingTvsWeek , loading , randomMovie} = useContext(Context)
 
 
   let settings = {
@@ -63,14 +52,6 @@ export default function Home() {
   };
 
 
-
-
-  useEffect(() => {
-    getTrending('movie', setTrendingMovies, "day")
-    getTrending('tv', setTrendingTv, "day")
-    getTrending("movie" , setTrendingMoviesWeek , "week")
-    getTrending("tv" , setTrendingTvWeek , "week")
-  }, [])
 
 
   return (

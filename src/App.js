@@ -10,11 +10,12 @@ import Notfound from './Notfound';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import jwtDecode from 'jwt-decode';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import MovieDetails from './MovieDetails';
 import Moveis from './Movies'
 import Tv from './Tv';
+import MoviesContext from './store';
 
 
 function App() {
@@ -43,33 +44,40 @@ function App() {
 
   // refresh Token
   // useEffect(() => {
-//   if (localStorage.getItem("setUserData") === null) {
-//     return decoded()
+  //   if (localStorage.getItem("setUserData") === null) {
+  //     return decoded()
   //   }
   // }, [])
 
   return (
+
     <div>
+
       <Navbar userData={decode} logout={logout} ></Navbar>
       <div className='' >
-        <Routes>
-          <Route path='/' element={<Home></Home>} ></Route>
-          <Route path='Home' element={<Home></Home>} ></Route>
-          <Route path='Movies' element={<Moveis></Moveis>} ></Route>
-          <Route path='TV' element={<Tv></Tv>} ></Route>
-          <Route path='MovieDetails' element={<MovieDetails></MovieDetails>} >
-            <Route path=':id' ></Route>
-          </Route>
-          <Route path='About' element={<About></About>} ></Route>
-          <Route path='Contact' element={<Contact></Contact>} ></Route>
-          <Route path='Login' element={<Login decoded={decoded} ></Login>} ></Route>
-          <Route path='Register' element={<Register></Register>} ></Route>
-          <Route path='*' element={<Notfound></Notfound>} ></Route>
-        </Routes>
+        <MoviesContext>
+          <Routes>
+
+            <Route path='/' element={<Home></Home>} ></Route>
+            <Route path='Home' element={<Home></Home>} ></Route>
+
+            <Route path='Movies' element={<Moveis></Moveis>} ></Route>
+            <Route path='TV' element={<Tv></Tv>} ></Route>
+            <Route path='MovieDetails' element={<MovieDetails></MovieDetails>} > 
+              <Route path=':id' ></Route>
+            </Route>
+            <Route path='About' element={<About></About>} ></Route>
+            <Route path='Contact' element={<Contact></Contact>} ></Route>
+            <Route path='Login' element={<Login decoded={decoded} ></Login>} ></Route>
+            <Route path='Register' element={<Register></Register>} ></Route>
+            <Route path='*' element={<Notfound></Notfound>} ></Route>
+          </Routes>
+        </MoviesContext>
       </div>
       <Footer></Footer>
 
     </div>
+
   );
 }
 

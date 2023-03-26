@@ -14,8 +14,7 @@ export default function Home() {
     const getTrending = async (index, callBack, mediaType) => {
         let { data } = await axios.get(`https://api.themoviedb.org/3/discover/${mediaType}?api_key=${api}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${index}`)
         callBack(data.results)
-        setLoading(false)
-
+        setTimeout(()=>{setLoading(false)},500)
         console.log(data)
 
     }
