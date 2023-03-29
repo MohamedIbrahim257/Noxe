@@ -14,7 +14,7 @@ export default function Home() {
 
 
 
-  let {trendingMovies , trendingTv , trendingMoviesWeek , trendingTvsWeek , loading , randomMovie} = useContext(Context)
+  let { trendingMovies, trendingTv, trendingMoviesWeek, trendingTvsWeek, loading, videos } = useContext(Context)
 
 
   let settings = {
@@ -56,43 +56,42 @@ export default function Home() {
 
   return (
     <>
-      <div className="container">
-        <SearchBar></SearchBar>
-      </div>
-
-      {/* <div className='w-100 h-50' >
-        <div className='w-100 h-100' >
-          <div className='position-absolute w-100 h-50 bg-gradient ' >
-            <img className='w-100 h-100' src={"https://image.tmdb.org/t/p/w500/"+ randomMovie ?.poster_path} alt="" />
-          </div>
-        </div>
-      </div> */}
-
-
-      <div className="carousel-style my-3">
-        <h2 className='ms-2' >Trending Movies</h2>
-        <Slider className='' {...settings} >  {trendingMovies.map((item) => <><Link key={item.id} to={`/MovieDetails/${item.id}`} >
-          <div className="item text-center ">
-            <img className='w-100' src={"https://image.tmdb.org/t/p/w500/" + item.poster_path} alt="" />
-            <h2 className='h5 py-2 name-movies' >{item.title}</h2>
-          </div>
-        </Link></>)}</Slider>
-      </div>
-
-
-      <div className="carousel-style my-3">
-        <h2 className='ms-2' >Trending TV SHOW</h2>
-        <Slider className='' {...settings} >  {trendingTv.map((item) => <><Link key={item.id} to={`/MovieDetails/${item.id}`} >
-          <div className="item text-center">
-            <img className='w-100' src={"https://image.tmdb.org/t/p/w500/" + item.poster_path} alt="" />
-            <h2 className='h5 py-2 ' >{item.name}</h2>
-          </div>
-        </Link></>)}</Slider>
-      </div>
-
-      
-
       {!loading ? <>
+        <div className="container">
+          <SearchBar></SearchBar>
+        </div>
+        {/* <iframe
+          className='responsive-iframe'
+          src={`https://www.youtube.com/embed/${videos[0]?.key}?modestbranding=1`}
+          allowFullScreen
+          loading="lazy"
+        >
+        </iframe> */}
+
+        <div className="carousel-style my-3">
+          <h2 className='ms-2' >Trending Movies</h2>
+          <Slider className='' {...settings} >  {trendingMovies.map((item) => <><Link key={item.id} to={`/MovieDetails/${item.id}`} >
+            <div className="item text-center ">
+              <img className='w-100' src={"https://image.tmdb.org/t/p/w500/" + item.poster_path} alt="" />
+              <h2 className='h5 py-2 name-movies' >{item.title}</h2>
+            </div>
+          </Link></>)}</Slider>
+        </div>
+
+
+        <div className="carousel-style my-3">
+          <h2 className='ms-2' >Trending TV SHOW</h2>
+          <Slider className='' {...settings} >  {trendingTv.map((item) => <><Link key={item.id} to={`/MovieDetails/${item.id}`} >
+            <div className="item text-center">
+              <img className='w-100' src={"https://image.tmdb.org/t/p/w500/" + item.poster_path} alt="" />
+              <h2 className='h5 py-2 ' >{item.name}</h2>
+            </div>
+          </Link></>)}</Slider>
+        </div>
+
+
+
+
         <div className="container">
 
           <div className="row gy-2 my-3">
