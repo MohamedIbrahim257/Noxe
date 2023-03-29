@@ -20,6 +20,11 @@ function SearchBar() {
         console.log(query)
     }
 
+    const quitSearch = () => {
+     let select = document.querySelector(".search-list");
+     return select.classList.add("d-none")
+    }
+
     return (
         <>
 
@@ -42,11 +47,13 @@ function SearchBar() {
 
                 {query.length > 0 ? <ul className='search-list' >
                     {searchAll.map((item, i) => (
-                        <Link to={`/MovieDetails/${item.id}`} >
+                    
+                        <Link onClick={()=> quitSearch()} to={`/MovieDetails/${item.id}`} >
+                           
                             {item.title ? <li className='' key={i}> <img className='mx-2' width="40px" src={"https://image.tmdb.org/t/p/w500/" + item.poster_path} alt="" />{item.title}</li> :
                                 <li className='' key={i}> <img className='mx-2' width="40px" src={"https://image.tmdb.org/t/p/w500/" + item.poster_path} alt="" />{item.name}</li>}
                         </Link>
-
+                     
                     ))}
 
 

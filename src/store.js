@@ -31,8 +31,6 @@ export default function MoviesContext(props) {
     }
 
 
-   
- 
 
     // let getVideo =async (callBack ) => {
     //     let {data} =  await axios.get(`https://api.themoviedb.org/3/movie/${videoId}/videos?${api}&language=en-US`)

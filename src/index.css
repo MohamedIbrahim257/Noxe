@@ -82,7 +82,7 @@ input {
   border-radius: 10px;
   width: 50%;
   position: absolute;
-  z-index: 999;
+
 }
 
 
@@ -103,6 +103,18 @@ input {
 
 
 }
+.search-list li:hover {
+  font-size: 1rem;
+  padding: 0.5rem;
+  border-bottom: 1px solid #ccc;
+  list-style-type: none;
+  color: var(--background-Color);
+  white-space: nowrap;
+  background-color: #24baef;
+
+  
+}
+
 
 @media (max-width: 768px) {
   .search-list input {
