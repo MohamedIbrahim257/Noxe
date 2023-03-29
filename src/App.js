@@ -53,7 +53,13 @@ function App() {
 
     <div>
 
-      <Navbar userData={decode} logout={logout} ></Navbar>
+      {/* <Navbar userData={decode} logout={logout} ></Navbar> */}
+
+    
+
+      <div className=' position-absolute top-0 w-100 navbar-style' >
+              <Navbar userData={decode} logout={logout} ></Navbar>
+              </div>
       <div className='' >
         <MoviesContext>
           <Routes>

@@ -12,7 +12,10 @@ export default function Home() {
     const getTrending = async (index, callBack, mediaType) => {
         let { data } = await axios.get(`https://api.themoviedb.org/3/discover/${mediaType}?api_key=${api}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${index}`)
         callBack(data.results)
-        setLoading(false)
+        setTimeout(() => {
+            setLoading(false)   
+        }, 500);
+
         console.log(data)
 
     }
@@ -28,8 +31,7 @@ export default function Home() {
         <>
 
             <div className="container">
-                <div className='my-3' >
-                    <SearchBar></SearchBar>
+                <div className='my-5 py-2' >
                 </div>
                 {!loading ? <>
                     <div className="row gy-2 justify-content-center">
@@ -60,7 +62,7 @@ export default function Home() {
                     </div>
 
 
-                </> : <div className='vh-100 d-flex justify-content-center align-items-center' ><i className='fas fa-spinner fa spin fa-3x' ></i></div>}
+                </> : <div className='vh-100 d-flex justify-content-center align-items-center' ><i className='fas fa-spinner fa-spin fa-3x' ></i></div>}
             </div>
 
 

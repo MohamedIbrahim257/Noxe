@@ -33,8 +33,8 @@ export default function Home() {
       
             <div className="container">
 
-            <div className='my-3' >
-                <SearchBar></SearchBar>
+            <div className='my-5 py-2' >
+
             </div>
 
                 {!loading ? <>

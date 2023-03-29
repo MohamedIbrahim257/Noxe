@@ -129,19 +129,23 @@ export default function MovieDetails() {
 
                         </div>
 
-                        <Slider className='my-5' {...settings} >
-                            {video?.map((vid, i) => <div key={i} className="">
-                                <div className="itemVideo">
-                                    <iframe
-                                        className='responsive-iframe'
-                                        src={`https://www.youtube.com/embed/${vid?.key}?modestbranding=1`}
-                                        allowFullScreen
-                                        loading="lazy"
-                                    >
-                                    </iframe>
-                                </div>
-                            </div>)}
-                        </Slider>
+                        <div className="row gy-2 d-flex justify-content-center">
+                          
+                                {video?.map((vid, i) => <div key={i} className="col-md-4 ">
+                                    <div className="itemVideo">
+                                        <iframe
+                                            className='responsive-iframe'
+                                            src={`https://www.youtube.com/embed/${vid?.key}?modestbranding=1`}
+                                            allowFullScreen
+                                            loading="lazy"
+                                        >
+                                        </iframe>
+                                    </div>
+                                </div>)}
+                         
+                        </div>
+
+
 
                     </div>
                 </div>

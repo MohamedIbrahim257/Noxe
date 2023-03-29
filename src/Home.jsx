@@ -6,6 +6,7 @@ import './slick-carousel/slick/slick.css';
 import './slick-carousel/slick/slick-theme.css';
 import { useContext } from 'react';
 import { Context } from './store';
+import Navbar from './Navbar';
 
 
 
@@ -67,16 +68,18 @@ export default function Home() {
           loading="lazy"
         >
         </iframe> */}
-
         <div className=" w-100 position-relative">
-          <div className='w-100' >
+
+          <div className='w-100 main-background' >
             <div className=' position-absolute layer' ></div>
-            <div className=' position-absolute  start-0  p-4 title-movie' >
+
+            <div className=' position-absolute start-0 p-5 title-movie' >
               <h1 className='text-white' >{randomMovie.title}</h1>
               <p className='text-white text-muted' >{randomMovie.release_date}</p>
-              <p className='text-white w-50' >{randomMovie.overview}</p>
+              <p className='text-white w-100' >{randomMovie.overview}</p>
+              <Link to={`/MovieDetails/${randomMovie.id}`} ><button className='btn btn-outline-info' >More Info</button></Link>
             </div>
-            <img className='w-100' src={"https://image.tmdb.org/t/p/original/" + randomMovie.backdrop_path} alt="" />
+            <img className='w-100 home-image' src={"https://image.tmdb.org/t/p/original/" + randomMovie.backdrop_path} alt="" />
           </div>
         </div>
 
@@ -84,7 +87,7 @@ export default function Home() {
           <h2 className='ms-2' >Trending Movies</h2>
           <Slider className='' {...settings} >  {trendingMovies.map((item) => <><Link key={item.id} to={`/MovieDetails/${item.id}`} >
             <div className="item text-center">
-              <img className='w-100' src={"https://image.tmdb.org/t/p/w500/" + item.poster_path} alt="" />
+              <img className='w-100 rounded' src={"https://image.tmdb.org/t/p/w500/" + item.backdrop_path} alt="" />
               <h2 className='h5 py-2 name-movies' >{item.title}</h2>
             </div>
           </Link></>)}</Slider>
@@ -95,8 +98,8 @@ export default function Home() {
           <h2 className='ms-2' >Trending TV SHOW</h2>
           <Slider className='' {...settings} >  {trendingTv.map((item) => <><Link key={item.id} to={`/MovieDetails/${item.id}`} >
             <div className="item text-center">
-              <img className='w-100' src={"https://image.tmdb.org/t/p/w500/" + item.poster_path} alt="" />
-              <h2 className='h5 py-2 ' >{item.name}</h2>
+              <img className='w-100 rounded' src={"https://image.tmdb.org/t/p/w500/" + item.backdrop_path} alt="" />
+              <h2 className='h5 py-2 name-movies' >{item.name}</h2>
             </div>
           </Link></>)}</Slider>
         </div>
