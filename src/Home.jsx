@@ -14,7 +14,7 @@ export default function Home() {
 
 
 
-  let { trendingMovies, trendingTv, trendingMoviesWeek, trendingTvsWeek, loading, videos } = useContext(Context)
+  let { trendingMovies, trendingTv, trendingMoviesWeek, trendingTvsWeek, loading, randomMovie } = useContext(Context)
 
 
   let settings = {
@@ -58,7 +58,7 @@ export default function Home() {
     <>
       {!loading ? <>
         <div className="container">
-          <SearchBar></SearchBar>
+          {/* <SearchBar></SearchBar> */}
         </div>
         {/* <iframe
           className='responsive-iframe'
@@ -68,10 +68,22 @@ export default function Home() {
         >
         </iframe> */}
 
+        <div className=" w-100 position-relative">
+          <div className='w-100' >
+            <div className=' position-absolute layer' ></div>
+            <div className=' position-absolute  start-0  p-4 title-movie' >
+              <h1 className='text-white' >{randomMovie.title}</h1>
+              <p className='text-white text-muted' >{randomMovie.release_date}</p>
+              <p className='text-white w-50' >{randomMovie.overview}</p>
+            </div>
+            <img className='w-100' src={"https://image.tmdb.org/t/p/original/" + randomMovie.backdrop_path} alt="" />
+          </div>
+        </div>
+
         <div className="carousel-style my-3">
           <h2 className='ms-2' >Trending Movies</h2>
           <Slider className='' {...settings} >  {trendingMovies.map((item) => <><Link key={item.id} to={`/MovieDetails/${item.id}`} >
-            <div className="item text-center ">
+            <div className="item text-center">
               <img className='w-100' src={"https://image.tmdb.org/t/p/w500/" + item.poster_path} alt="" />
               <h2 className='h5 py-2 name-movies' >{item.title}</h2>
             </div>

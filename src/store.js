@@ -34,14 +34,15 @@ export default function MoviesContext(props) {
    
  
 
-    let getVideo = (callBack ) => {
-        const videoId = randomMovie?.id.then(()=> axios.get(`https://api.themoviedb.org/3/movie/${videoId}/videos?${api}&language=en-US`).then((res)=>  callBack(res.data.results) ))
-     
-        setTimeout(() => {
-            setLoading(false)
-        }, 500);
+    // let getVideo =async (callBack ) => {
+    //     let {data} =  await axios.get(`https://api.themoviedb.org/3/movie/${videoId}/videos?${api}&language=en-US`)
 
-    }
+     
+    //     setTimeout(() => {
+    //         setLoading(false)
+    //     }, 500);
+
+    // }
 
 
 
@@ -50,10 +51,10 @@ export default function MoviesContext(props) {
         getTrending('tv', setTrendingTv, "day")
         getTrending("movie", setTrendingMoviesWeek, "week")
         getTrending("tv", setTrendingTvWeek, "week")
-        getVideo( setVideos)
+        // getVideo( setVideos)
     }, [])
 
-    return <Context.Provider value={{ trendingMovies, trendingTv, trendingMoviesWeek, trendingTvsWeek, loading, videos }} >
+    return <Context.Provider value={{ trendingMovies, trendingTv, trendingMoviesWeek, trendingTvsWeek, loading, videos , randomMovie }} >
 
         {props.children}
 
