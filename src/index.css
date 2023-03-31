@@ -295,9 +295,9 @@ input {
 
 
 
-.carousel-style {
+/* .carousel-style {
   padding-left: 4rem;
-}
+} */
 
 
 @media(max-width : 992px) {
@@ -344,7 +344,20 @@ input {
   height: 100%;
   background-color: rgba(0, 0, 0, 1);
   opacity: 0.3;
+
 }
+
+.layer-h{
+ position: absolute;
+ bottom: 0;
+ width: 100%;
+ height: 200px;
+ --tw-gradient-from: #000;
+ --tw-gradient-to: rgb(0 0 0 / 0);
+ --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+ background-image: linear-gradient(to top, var(--tw-gradient-stops));
+}
+
 
 @media (max-width : 992px) {
   .title-movie {

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import SearchBar from './SearchBar'
+import Preloader from './Preloader'
 
 export default function Home() {
     let [trendingTv, setTrendingTv] = useState([])
@@ -33,7 +34,7 @@ export default function Home() {
             <div className="container">
                 <div className='my-5 py-2' >
                 </div>
-                {!loading ? <>
+       
                     <div className="row gy-2 justify-content-center">
 
                         {trendingTv.map((tv) => <>
@@ -41,7 +42,7 @@ export default function Home() {
                             <div key={tv.id} className="col-md-2">
                                 <Link to={`/MovieDetails/${tv.id}`} >
                                     <div className="item text-center ">
-                                        {tv.poster_path ? <img className='w-100' src={"https://image.tmdb.org/t/p/w500/" + tv.poster_path} alt="" /> : <div>Photo Not Found</div>}
+                                        {tv.poster_path ? <img className='w-100 rounded' src={"https://image.tmdb.org/t/p/w500/" + tv.poster_path} alt="" /> : <div>Photo Not Found</div>}
 
                                         {<h2 className='h5 py-2' >{tv.name}</h2>}
 
@@ -62,7 +63,7 @@ export default function Home() {
                     </div>
 
 
-                </> : <div className='vh-100 d-flex justify-content-center align-items-center' ><i className='fas fa-spinner fa-spin fa-3x' ></i></div>}
+         
             </div>
 
 

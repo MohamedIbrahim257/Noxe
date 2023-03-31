@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import Slider from 'react-slick'
+import Preloader from './Preloader'
 
 
 
@@ -11,9 +12,7 @@ export default function MovieDetails() {
     let [movieDetails, setMovieDetails] = useState([]);
     let [genres, setGenres] = useState([]);
     let [video, setVideo] = useState([]);
-    let [images, setImages] = useState([]);
     let [seasons, setSeasons] = useState([]);
-    let [loading, setLoading] = useState(true);
     let params = useParams();
 
 
@@ -59,10 +58,6 @@ export default function MovieDetails() {
         callBack(data)
         setGenres(data.genres)
         setSeasons(data.seasons)
-        setTimeout(() => {
-            setLoading(false)
-        }, 500);
-
         console.log(data)
     }
 
@@ -71,18 +66,12 @@ export default function MovieDetails() {
         let { data } = await axios.get(`
         https://api.themoviedb.org/3/${mediaType}/${id}/${genreType}?api_key=${api}&language=en-US`)
         callBack(data.results)
-        setTimeout(() => {
-            setLoading(false)
-        }, 500);
-
         console.log(data)
     }
 
     useEffect(() => {
         getDetails("movie", setMovieDetails, params.id)
         getDetails("tv", setMovieDetails, params.id)
-        getVideo("movie", setImages, params.id, "images")
-        getVideo("tv", setImages, params.id, "images")
         getVideo("movie", setVideo, params.id, "videos")
         getVideo("tv", setVideo, params.id, "videos")
     }, [])
@@ -90,7 +79,7 @@ export default function MovieDetails() {
     return (
         <>
 
-            {!loading ? <>
+          <>
 
                 <div className="container">
                     <div className="row my-5 py-5">
@@ -137,7 +126,7 @@ export default function MovieDetails() {
                                             className='responsive-iframe'
                                             src={`https://www.youtube.com/embed/${vid?.key}?modestbranding=1`}
                                             allowFullScreen
-                                            loading="lazy"
+
                                         >
                                         </iframe>
                                     </div>
@@ -151,8 +140,7 @@ export default function MovieDetails() {
                 </div>
 
 
-            </> : <div className='vh-100 d-flex justify-content-center align-items-center'>
-                <i className='fas fa-spinner fa-spin fa-3x' ></i></div>}
+            </> 
 
 
         </>

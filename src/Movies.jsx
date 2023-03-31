@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
-import SearchBar from './SearchBar'
+import Preloader from './Preloader'
+
 
 
 export default function Home() {
@@ -37,7 +38,7 @@ export default function Home() {
 
             </div>
 
-                {!loading ? <>
+     
 
                     {trendingMovies ? <div className="row gy-2 justify-content-center">
                         {trendingMovies.map((movies) => <>
@@ -45,7 +46,7 @@ export default function Home() {
                             <div key={movies.id} className="col-md-2">
                                 <Link to={`/MovieDetails/${movies.id}`} >
                                     <div className="item text-center ">
-                                        <img className='w-100' src={"https://image.tmdb.org/t/p/w500/" + movies.poster_path} alt="" />
+                                        <img className='w-100 rounded' src={"https://image.tmdb.org/t/p/w500/" + movies.poster_path} alt="" />
                                         {<h2 className='h5 py-2' >{movies.title}</h2>}
 
                                     </div>
@@ -63,9 +64,9 @@ export default function Home() {
 
                             </ul>
                         </nav>
-                    </div> : <div className='vh-100 d-flex align-items-center justify-content-center' ><i className='fas fa-spinner fa-spin fa-3x' ></i></div>}
+                    </div> : <Preloader></Preloader>}
 
-                </> : <div className='vh-100 d-flex align-items-center justify-content-center' ><i className='fas fa-spinner fa-spin fa-3x' ></i></div>}
+ 
             </div>
 
 

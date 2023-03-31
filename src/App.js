@@ -22,6 +22,7 @@ function App() {
   let navigate = useNavigate()
   const [decode, setSecoded] = useState(null)
 
+
   const decoded = () => {
     let token = localStorage.getItem("setUserDate");
     let decode = jwtDecode(token)
@@ -49,19 +50,27 @@ function App() {
   //   }
   // }, [])
 
+  const [loading , setLoading] = useState(true);
+  let spin  = document.querySelector(".spinner");
+  if(spin){
+    setTimeout(() => {
+      spin.classList.add("d-none")
+      setLoading(false)
+    }, 1000);
+  }
+
+
   return (
-
-    <div>
-
-      {/* <Navbar userData={decode} logout={logout} ></Navbar> */}
-
     
-
+  
+    <div>
+       {!loading &&
+      <MoviesContext>
       <div className=' position-absolute top-0 w-100 navbar-style' >
               <Navbar userData={decode} logout={logout} ></Navbar>
               </div>
       <div className='' >
-        <MoviesContext>
+ 
           <Routes>
 
             <Route path='/' element={<Home></Home>} ></Route>
@@ -78,11 +87,13 @@ function App() {
             <Route path='Register' element={<Register></Register>} ></Route>
             <Route path='*' element={<Notfound></Notfound>} ></Route>
           </Routes>
-        </MoviesContext>
+    
       </div>
       <Footer></Footer>
-
+      </MoviesContext>
+}
     </div>
+    
 
   );
 }
